@@ -21,6 +21,8 @@ elif provider == 'ntv_vostok':
 	name = 'NTV+ Vostok'; caid = '0500'; url = 'ntvplusbonum1'; satellite = 'Bonum 1 (56E)'
 elif provider == 'tricolor_sibir':
 	name = 'Tricolor TV Sibir'; caid = '4AE1'; url = 'tricolorbonum1'; satellite = 'Bonum 1 (56E)'
+elif provider == 'aktiv':
+	name = 'Aktiv TV'; caid = '0B00'; url = 'aktiv'; satellite = 'Eutelsat 904 (60E)'
 elif provider == 'raduga':
 	name = 'Raduga TV'; caid = '0652'; url = 'raduga'; satellite = 'ABS 1 (75E)'
 elif provider == 'kontinent':
