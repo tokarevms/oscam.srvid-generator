@@ -5,12 +5,12 @@ import sys, urllib, re
 try:
 	provider = sys.argv[1]
 except:
-	print 'oscam.srvid v0.3: no param specified \
+	print 'oscam.srvid v0.5: no param specified \
 	\nTry: `' + sys.argv[0] + ' -h\' or \''+ sys.argv[0] + ' --help\' for more information'
 	sys.exit()
 
 if provider == '-h' or provider == '--help':
-	print 'oscam.srvid v0.3 \
+	print 'oscam.srvid v0.5 \
 	\nUsage: ' + sys.argv[0] + ' [provider] \
 	\n\nProviders: \
 	\nviasatua - Viasat Ukraina (4.8E) \
@@ -18,6 +18,7 @@ if provider == '-h' or provider == '--help':
 	\ncyfra - Cyfra+ (13E) \
 	\nnova - Nova (13E) \
 	\nskyitalia - Sky Italia (13E) \
+	\nhdplus - HD Plus (19.2E) \
 	\nskydeutsch - Sky Deutschland (19.2E) \
 	\nntv - NTV Plus (36E) \
 	\nntv_vostok - NTV Plus Vostok (56E) \
@@ -37,6 +38,8 @@ elif provider == 'nova':
 	name = 'Nova'; caid = '0604'; url = 'nova'; satellite = 'Hot Bird 13B/13C (13E)'
 elif provider == 'skyitalia':
 	name = 'Sky Italia'; caid = '093B'; url = 'skyitalia'; satellite = 'Hot Bird 13A/13B/13C (13E)'
+elif provider == 'hdplus':
+	name = 'HD Plus'; caid = '1843'; url = 'hdplus'; satellite = 'Astra 1KR/1L/1M (19.2E)'
 elif provider == 'skydeutsch':
 	name = 'Sky Deutschland'; caid = '1702'; url = 'skydeutschland'; satellite = 'Astra 1KR/1L/1M/2C (19.2E)'
 elif provider == 'ntv':
@@ -54,7 +57,7 @@ elif provider == 'raduga':
 elif provider == 'kontinent':
 	name = 'Kontinent TV'; caid = '0602'; url = 'kontinent'; satellite = 'Horizons 2 (85E)' 
 else:
-	print 'oscam.srvid v0.3: no param specified \
+	print 'oscam.srvid v0.5: no param specified \
 	\nTry: `' + sys.argv[0] + ' -h\' or \''+ sys.argv[0] + ' --help\' for more information'
 	sys.exit()
 
