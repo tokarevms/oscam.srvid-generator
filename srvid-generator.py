@@ -6,11 +6,13 @@ try:
 	provider = sys.argv[1]
 except:
 	print 'oscam.srvid v0.2: no param specified \
-	\nUsage: `' + sys.argv[0] + ' (viasatua | cyfra | nova | skyitalia | ntv | ntv_vostok | tricolor | tricolor_sibir | aktiv | raduga | kontinent)`'
+	\nUsage: `' + sys.argv[0] + ' (viasatua | hello | cyfra | nova | skyitalia | ntv | ntv_vostok | tricolor | tricolor_sibir | aktiv | raduga | kontinent)`'
 	sys.exit()
 
 if provider == 'viasatua':
 	name = 'Viasat Ukraina'; caid = '4AE1'; url = 'viasatua'; satellite = 'Astra 4A (4.8E)'
+elif provider == 'hello':
+	name = 'Hello HD'; caid = '0BAA'; url = 'hello'; satellite = 'Eutelsat 9A (9E)'
 elif provider == 'cyfra':
 	name = 'Cyfra+'; caid = '0100'; url = 'cyfra'; satellite = 'Hot Bird 13C (13E)'
 elif provider == 'nova':
@@ -33,7 +35,7 @@ elif provider == 'kontinent':
 	name = 'Kontinent TV'; caid = '0602'; url = 'kontinent'; satellite = 'Horizons 2 (85E)' 
 else:
 	print 'oscam.srvid v0.2: wrong param \
-	\nUsage: `' + sys.argv[0] + ' (viasatua | cyfra | nova | skyitalia | ntv | ntv_vostok | tricolor | tricolor_sibir | aktiv | raduga | kontinent)`' 
+	\nUsage: `' + sys.argv[0] + ' (viasatua | hello | cyfra | nova | skyitalia | ntv | ntv_vostok | tricolor | tricolor_sibir | aktiv | raduga | kontinent)`' 
 	sys.exit()
 
 output = open(provider + '.oscam.srvid', 'w')

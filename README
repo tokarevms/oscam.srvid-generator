@@ -1,9 +1,10 @@
 Tools for oscam (Open Source Conditional Access Module software) on Python.
 
-Description: tools get info (sid, channel) from http://www.lyngsat.com and store to oscam.srvid
+Description: tools get info (sid, channel name) from http://www.lyngsat.com and store to oscam.srvid
 
 Support providers:
 - Viasat Ukraina (http://www.viasat.ua)
+- Hello HD
 - Cyfra+ (http://www.cyfraplus.pl)
 - Nova
 - Sky Italia
