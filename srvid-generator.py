@@ -1,68 +1,52 @@
 #!/usr/bin/python
 # -*- coding utf-8 -*-
-import sys, urllib, re
+import sys
+import urllib
+import re
 
-def fail():
-	print 'oscam.srvid v0.5: no param specified \
-	\nTry: `' + sys.argv[0] + ' -h\' or \''+ sys.argv[0] + ' --help\' for more information'
-	sys.exit()
+
+__version__ = 'oscam.srvid v0.5'
+
+providers = {
+	'viasatua': ('Viasat Ukraina', '4AE1', 'viasatua', 'Astra 4A (4.8E)'),
+	'hello': ('Hello HD', '0BAA', 'hello', 'Eutelsat 9A (9E)'),
+	'cyfra': ('Cyfra+', '0100', 'cyfra', 'Hot Bird 13C (13E)'),
+	'nova': ('Nova', '0604', 'nova', 'Hot Bird 13B/13C (13E)'),
+	'skyitalia': ('Sky Italia', '093B', 'skyitalia', 'Hot Bird 13A/13B/13C (13E)'),
+	'hdplus': ('HD Plus', '1843', 'hdplus', 'Astra 1KR/1L/1M (19.2E)'),
+	'skydeutsch': ('Sky Deutschland', '1702', 'skydeutschland', 'Astra 1KR/1L/1M/2C (19.2E)'),
+	'ntv': ('NTV+', '0500', 'ntvplus36', 'Eutelsat 36A/36B (36E)'),
+	'tricolor': ('Tricolor TV', '4AE1', 'tricolor', 'Eutelsat 36A/36B (36E)'),
+	'ntv_vostok': ('NTV+ Vostok', '0500', 'ntvplusbonum1', 'Bonum 1 (56E)'),
+	'tricolor_sibir': ('Tricolor TV Sibir', '4AE1', 'tricolorbonum1', 'Bonum 1 (56E)'),
+	'aktiv': ('Aktiv TV', '0B00', 'aktiv', 'Eutelsat 904 (60E)'),
+	'raduga': ('Raduga TV', '0652', 'raduga', 'ABS 1 (75E)'),
+	'kontinent': ('Kontinent TV', '0602', 'kontinent', 'Horizons 2 (85E)') 
+}
+
+class InvalidParamException(Exception):
+	def __init__(self, *args, **kwargs):
+		print '%s: incorret param' % __version__
+		print 'Try: `' + sys.argv[0] + ' -h\' or \''+ sys.argv[0] + ' --help\' for more information.'
+		sys.exit()
 
 try:
 	provider = sys.argv[1]
-except:
-	fail()
+except IndexError:
+    raise InvalidParamException()
 
 if provider == '-h' or provider == '--help':
-	print 'oscam.srvid v0.5 \
-	\nUsage: ' + sys.argv[0] + ' [provider] \
-	\n\nProviders: \
-	\nviasatua - Viasat Ukraina (4.8E) \
-	\nhello - Hello HD (9E) \
-	\ncyfra - Cyfra+ (13E) \
-	\nnova - Nova (13E) \
-	\nskyitalia - Sky Italia (13E) \
-	\nhdplus - HD Plus (19.2E) \
-	\nskydeutsch - Sky Deutschland (19.2E) \
-	\nntv - NTV Plus (36E) \
-	\nntv_vostok - NTV Plus Vostok (56E) \
-	\ntricolor - Tricolor TV (36E) \
-	\ntricolor_sibir - Tricolor TV Sibir (56E) \
-	\naktiv - Aktiv TV (60E) \
-	\nraduga - Raduga TV (75E) \
-	\nkontinent - Kontinent TV (85E)'
+	print __version__
+	print 'Usage: ' + sys.argv[0] + ' [provider] \n\nProviders:'
+	for key, provider in providers.iteritems():
+		print '%s - %s' % (key, provider[3])
 	sys.exit()
-elif provider == 'viasatua':
-	name = 'Viasat Ukraina'; caid = '4AE1'; url = 'viasatua'; satellite = 'Astra 4A (4.8E)'
-elif provider == 'hello':
-	name = 'Hello HD'; caid = '0BAA'; url = 'hello'; satellite = 'Eutelsat 9A (9E)'
-elif provider == 'cyfra':
-	name = 'Cyfra+'; caid = '0100'; url = 'cyfra'; satellite = 'Hot Bird 13C (13E)'
-elif provider == 'nova':
-	name = 'Nova'; caid = '0604'; url = 'nova'; satellite = 'Hot Bird 13B/13C (13E)'
-elif provider == 'skyitalia':
-	name = 'Sky Italia'; caid = '093B'; url = 'skyitalia'; satellite = 'Hot Bird 13A/13B/13C (13E)'
-elif provider == 'hdplus':
-	name = 'HD Plus'; caid = '1843'; url = 'hdplus'; satellite = 'Astra 1KR/1L/1M (19.2E)'
-elif provider == 'skydeutsch':
-	name = 'Sky Deutschland'; caid = '1702'; url = 'skydeutschland'; satellite = 'Astra 1KR/1L/1M/2C (19.2E)'
-elif provider == 'ntv':
-	name = 'NTV+'; caid = '0500'; url = 'ntvplus36'; satellite = 'Eutelsat 36A/36B (36E)'
-elif provider == 'tricolor':
-	name = 'Tricolor TV'; caid = '4AE1'; url = 'tricolor'; satellite = 'Eutelsat 36A/36B (36E)'
-elif provider == 'ntv_vostok':
-	name = 'NTV+ Vostok'; caid = '0500'; url = 'ntvplusbonum1'; satellite = 'Bonum 1 (56E)'
-elif provider == 'tricolor_sibir':
-	name = 'Tricolor TV Sibir'; caid = '4AE1'; url = 'tricolorbonum1'; satellite = 'Bonum 1 (56E)'
-elif provider == 'aktiv':
-	name = 'Aktiv TV'; caid = '0B00'; url = 'aktiv'; satellite = 'Eutelsat 904 (60E)'
-elif provider == 'raduga':
-	name = 'Raduga TV'; caid = '0652'; url = 'raduga'; satellite = 'ABS 1 (75E)'
-elif provider == 'kontinent':
-	name = 'Kontinent TV'; caid = '0602'; url = 'kontinent'; satellite = 'Horizons 2 (85E)' 
-else:
-	fail()
 
-output = open(provider + '.oscam.srvid', 'w')
+if provider in providers:
+	name, caid, url, satellite = providers[provider]
+	output = open(provider + '.oscam.srvid', 'w')
+else:
+    raise InvalidParamException()
 
 if url:
 	url = 'http://www.lyngsat.com/packages/' + url + '_sid.html'
