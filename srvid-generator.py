@@ -6,10 +6,12 @@ try:
 	provider = sys.argv[1]
 except:
 	print 'oscam.srvid v0.1: no param specified \
-	\nUsage: `' + sys.argv[0] + ' (ntv | ntv_vostok | tricolor | tricolor_sibir | raduga | kontinent)`'
+	\nUsage: `' + sys.argv[0] + ' (cyfra | ntv | ntv_vostok | tricolor | tricolor_sibir | raduga | kontinent)`'
 	sys.exit()
 
-if provider == 'ntv':
+if provider == 'cyfra':
+	name = 'Cyfra+'; caid = '0100'; url = 'cyfra'; satellite = 'Hot Bird 13C (13E)'
+elif provider == 'ntv':
 	name = 'NTV+'; caid = '0500'; url = 'ntvplus36'; satellite = 'Eutelsat 36A/36B (36E)'
 elif provider == 'tricolor':
 	name = 'Tricolor TV'; caid = '4AE1'; url = 'tricolor'; satellite = 'Eutelsat 36A/36B (36E)'
@@ -23,7 +25,7 @@ elif provider == 'kontinent':
 	name = 'Kontinent TV'; caid = '0602'; url = 'kontinent'; satellite = 'Horizons 2 (85E)' 
 else:
 	print 'oscam.srvid v0.1: wrong param \
-	\nUsage: `' + sys.argv[0] + ' (ntv | ntv_vostok | tricolor | tricolor_sibir | raduga | kontinent)`' 
+	\nUsage: `' + sys.argv[0] + ' (cyfra | ntv | ntv_vostok | tricolor | tricolor_sibir | raduga | kontinent)`' 
 	sys.exit()
 
 output = open(provider + '.oscam.srvid', 'w')
