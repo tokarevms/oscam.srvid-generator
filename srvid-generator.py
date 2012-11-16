@@ -5,8 +5,8 @@ import sys, urllib, re
 try:
 	provider = sys.argv[1]
 except:
-	print 'oscam.srvid v0.2: no param specified \
-	\nUsage: `' + sys.argv[0] + ' (viasatua | hello | cyfra | nova | skyitalia | ntv | ntv_vostok | tricolor | tricolor_sibir | aktiv | raduga | kontinent)`'
+	print 'oscam.srvid v0.3: no param specified \
+	\nUsage: `' + sys.argv[0] + ' (viasatua | hello | cyfra | nova | skyitalia | skydeutsch | ntv | ntv_vostok | tricolor | tricolor_sibir | aktiv | raduga | kontinent)`'
 	sys.exit()
 
 if provider == 'viasatua':
@@ -19,6 +19,8 @@ elif provider == 'nova':
 	name = 'Nova'; caid = '0604'; url = 'nova'; satellite = 'Hot Bird 13B/13C (13E)'
 elif provider == 'skyitalia':
 	name = 'Sky Italia'; caid = '093B'; url = 'skyitalia'; satellite = 'Hot Bird 13A/13B/13C (13E)'
+elif provider == 'skydeutsch':
+	name = 'Sky Deutschland'; caid = '1702'; url = 'skydeutschland'; satellite = 'Astra 1KR/1L/1M/2C (19.2E)'
 elif provider == 'ntv':
 	name = 'NTV+'; caid = '0500'; url = 'ntvplus36'; satellite = 'Eutelsat 36A/36B (36E)'
 elif provider == 'tricolor':
@@ -34,8 +36,8 @@ elif provider == 'raduga':
 elif provider == 'kontinent':
 	name = 'Kontinent TV'; caid = '0602'; url = 'kontinent'; satellite = 'Horizons 2 (85E)' 
 else:
-	print 'oscam.srvid v0.2: wrong param \
-	\nUsage: `' + sys.argv[0] + ' (viasatua | hello | cyfra | nova | skyitalia | ntv | ntv_vostok | tricolor | tricolor_sibir | aktiv | raduga | kontinent)`' 
+	print 'oscam.srvid v0.3: wrong param \
+	\nUsage: `' + sys.argv[0] + ' (viasatua | hello | cyfra | nova | skyitalia | skydeutsch | ntv | ntv_vostok | tricolor | tricolor_sibir | aktiv | raduga | kontinent)`' 
 	sys.exit()
 
 output = open(provider + '.oscam.srvid', 'w')
