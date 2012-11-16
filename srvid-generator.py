@@ -2,12 +2,15 @@
 # -*- coding utf-8 -*-
 import sys, urllib, re
 
-try:
-	provider = sys.argv[1]
-except:
+def fail():
 	print 'oscam.srvid v0.5: no param specified \
 	\nTry: `' + sys.argv[0] + ' -h\' or \''+ sys.argv[0] + ' --help\' for more information'
 	sys.exit()
+
+try:
+	provider = sys.argv[1]
+except:
+	fail()
 
 if provider == '-h' or provider == '--help':
 	print 'oscam.srvid v0.5 \
@@ -57,9 +60,7 @@ elif provider == 'raduga':
 elif provider == 'kontinent':
 	name = 'Kontinent TV'; caid = '0602'; url = 'kontinent'; satellite = 'Horizons 2 (85E)' 
 else:
-	print 'oscam.srvid v0.5: no param specified \
-	\nTry: `' + sys.argv[0] + ' -h\' or \''+ sys.argv[0] + ' --help\' for more information'
-	sys.exit()
+	fail()
 
 output = open(provider + '.oscam.srvid', 'w')
 
