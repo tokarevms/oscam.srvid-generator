@@ -1,4 +1,13 @@
 Tools for oscam (Open Source Conditional Access Module software) on Python.
 
 Description: tools get info (sid, channel) from http://www.lyngsat.com and store to oscam.srvid
-Support providers: Cyfra+, NTV+, NTV+ Vostok, Tricolor TV, Tricolor TV Sibir, Raduga TV, Kontinent TV.
+
+Support providers:
+- Viasat Ukraina (http://www.viasat.ua)
+- Cyfra+ (http://www.cyfraplus.pl)
+- NTV+ (http://www.ntvplus.ru)
+- NTV+ Vostok (http://www.ntvplus.ru)
+- Tricolor TV (http://www.tricolor.tv)
+- Tricolor TV Sibir (http://www.tricolor.tv)
+- Raduga TV (http://www.raduga-tv.ru)
+- Kontinent TV (http://www.continent-tv.ru)
